@@ -1,20 +1,67 @@
 <!DOCTYPE html>
 <html>
     <head>
-      <title>Example</title>
+      <title>Tic-Tac-Toe</title>
 
       <script src="vendor.bundle.js" type="text/javascript" charset="utf-8" defer></script>
       <script src="bundle.js" type="text/javascript" charset="utf-8" defer></script>
     </head>
-    <body class="container-fluid">
-      <h1>Example</h1>
 
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-      eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-      minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
-      ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-      velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-      cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
-      est laborum.</p>
+<!-- should i use the starter code below? -->
+    <!-- <body class="container-fluid"> -->
+
+<body>
+
+
+  <h1>Hey there!</h1>
+  <h3>wanna play tic-tac-toe?</h3>
+  <h4>(yeah you do!)</h4>
+
+
+<!-- tic-tac-toe board div -->
+    <h1>tic-tac-toe</h1>
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-4">0</div>
+        <div class="col-xs-4">1</div>
+        <div class="col-xs-4">2</div>
+      </div>
+      <div class="row">
+        <div class="col-xs-4">3</div>
+        <div class="col-xs-4">4</div>
+        <div class="col-xs-4">5</div>
+      </div>
+      <div class="row">
+        <div class="col-xs-4">6</div>
+        <div class="col-xs-4">7</div>
+        <div class="col-xs-4">8</div>
+      </div>
+    </div>
+
+    <!-- MODAL SECTION  -->
+        <!-- Sign In Modal -->
+        <div class="modal fade" id="signInModal" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button> -->
+                <h4 class="modal-title" id="myModalLabel">Sign in!</h4>
+              </div>
+              <div class="modal-body">
+                <form>
+                  <input name="credentials[email]" placeholder="email address">
+                  <input name="credentials[password]" placeholder="password">
+                </form>
+              </div>
+              <div class="modal-footer">
+                <!-- <button type="button" class="btn btn-default" data-dismiss="modal">Close</button> -->
+                <button type="button" class="btn btn-primary" id="sign-in-button">Sign in!</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </body>
+    </html>
     </body>
-</html>
+</html
