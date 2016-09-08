@@ -1,0 +1,23 @@
+$off-white: #fefefe;
+$charcoal: #4e4e4e;
+$gray: #e5e5e5;
+$white: #fff;
+$black: #000;
+$red: #f00;
+$dark-olive-green: #556b2f;
+$olive: #808000;
+$olive-drab: #6b8e23;
+$yellow-green: #9acd32;
+$lime-green: #32cd32;
+$dark-sea-green: #8fbc8f;
+$medium-sea-green: #3cb371;
+$sea-green: #2e8b57;
+
+
+@function tint($color, $percentage) {
+  @return mix($white, $color, $percentage);
+}
+
+@function shade($color, $percentage) {
+  @return mix($black, $color, $percentage);
+}

@@ -7,11 +7,11 @@
       <script src="bundle.js" type="text/javascript" charset="utf-8" defer></script>
     </head>
 
-<!-- should i use the starter code below? -->
+<!-- should i use container or container-fluid,
+(below), which was in the starter code? -->
     <!-- <body class="container-fluid"> -->
 
 <body>
-
 
   <h1>Hey there!</h1>
   <h3>wanna play tic-tac-toe?</h3>
@@ -19,7 +19,7 @@
 
 
 <!-- tic-tac-toe board div -->
-    <h1>tic-tac-toe</h1>
+    <h2>tic-tac-toe</h2>
     <div class="container">
       <div class="row">
         <div class="col-xs-4">0</div>
@@ -60,6 +60,43 @@
             </div>
           </div>
         </div>
+
+<!-- Sign up, sign in, change password, sign out forms -->
+<form id="sign-up">
+        <fieldset>
+          <legend>Sign up!</legend>
+          <input type="email" name="credentials[email]" placeholder="Enter your email">
+          <input type="password" name="credentials[password]" placeholder="Enter your password">
+          <input type="password" name="credentials[password]" placeholder="Confirm password">
+          <input type="submit" name="submit" value="Sign up!">
+        </fieldset>
+      </form>
+
+      <form id="sign-in">
+        <fieldset>
+          <legend>Sign in!</legend>
+          <input type="email" name="credentials[email]" placeholder="Enter your email">
+          <input type="password" name="credentials[password]" placeholder="Enter your password">
+          <input type="submit" name="submit" value="Sign in!">
+        </fieldset>
+      </form>
+
+      <form id="change-password">
+        <fieldset>
+          <legend>Change password</legend>
+          <input type="password" name="passwords[old]" placeholder="Old password">
+          <input type="password" name="passwords[new]" placeholder="New password">
+          <input type="submit" name="submit" value="Change password">
+        </fieldset>
+      </form>
+
+      <form id="sign-out">
+        <fieldset>
+          <legend>Sign out</legend>
+          <input type="submit" name="submit" value="Sign out">
+        </fieldset>
+      </form>
+
 
       </body>
     </html>
