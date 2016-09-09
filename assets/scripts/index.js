@@ -5,6 +5,7 @@
 
 // use require without a reference to ensure a file is bundled
 require('./example');
+require('.././events');
 
 // event handlers and stuff
 
@@ -18,6 +19,12 @@ $('#sign-out').show();
 $('#change-password').show();
 $('#sign-up').hide();
 $('#sign-in').hide();
+});
+
+const logicEvents = require('./logic/events.js');
+
+$(() => {
+  logicEvents.addHandlers();
 });
 
 // $(document).ready(function() {
