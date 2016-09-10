@@ -40,15 +40,6 @@ const signOut = () => {
     });
 };
 
-//DELETED CODE BELOW:
-  // if (Math.random() > 0.5) {
-  //   success('in signUp');
-  // } else {
-  //   let error = new Error('Random');
-  //   error.data = data;
-  //   failure(error);
-  //}
-//};
 
 module.exports = {
   signUp,
