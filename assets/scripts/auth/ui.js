@@ -7,7 +7,7 @@ const signInSuccess = (data) => {
 };
 
 const changePasswordSuccess = () => {
-  console.log('password successfully changed');
+  console.log('Password successfully changed');
 };
 
 const success = (data) => {

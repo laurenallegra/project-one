@@ -1,15 +1,13 @@
 <!DOCTYPE html>
 <html>
-    <head>
-      <title>Tic-Tac-Toe</title>
 
-      <script src="vendor.bundle.js" type="text/javascript" charset="utf-8" defer></script>
-      <script src="bundle.js" type="text/javascript" charset="utf-8" defer></script>
-    </head>
+<head>
+  <title>Tic-Tac-Toe</title>
 
-<!-- should i use container or container-fluid,
-(below), which was in the starter code? -->
-    <!-- <body class="container-fluid"> -->
+  <script src="vendor.bundle.js" type="text/javascript" charset="utf-8" defer></script>
+  <script src="bundle.js" type="text/javascript" charset="utf-8" defer></script>
+</head>
+
 
 <body>
 
@@ -18,87 +16,104 @@
   <h4>(yeah you do!)</h4>
 
 
-<!-- tic-tac-toe board div -->
-    <h2>tic-tac-toe</h2>
-    <div class="container">
-      <div class="row">
-        <div class="col-xs-4" id=0>0</div>
-        <div class="col-xs-4" id=1>1</div>
-        <div class="col-xs-4" id=2>2</div>
-      </div>
-      <div class="row">
-        <div class="col-xs-4" id=3>3</div>
-        <div class="col-xs-4" id=4>4</div>
-        <div class="col-xs-4" id=5>5</div>
-      </div>
-      <div class="row">
-        <div class="col-xs-4" id=6>6</div>
-        <div class="col-xs-4" id=7>7</div>
-        <div class="col-xs-4" id=8>8</div>
+  <!-- tic-tac-toe board div -->
+  <h2>tic-tac-toe</h2>
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-4 cell" data-index=0></div>
+      <div class="col-xs-4 cell" data-index=1></div>
+      <div class="col-xs-4 cell" data-index=2></div>
+    </div>
+    <div class="row">
+      <div class="col-xs-4 cell" data-index=3></div>
+      <div class="col-xs-4 cell" data-index=4></div>
+      <div class="col-xs-4 cell" data-index=5></div>
+    </div>
+    <div class="row">
+      <div class="col-xs-4 cell" data-index=6></div>
+      <div class="col-xs-4 cell" data-index=7></div>
+      <div class="col-xs-4 cell" data-index=8></div>
+    </div>
+  </div>
+
+  <form id="index-game">
+      <button type="submit" name="submit" class="btn btn-default">Show Games</button>
+  </form>
+
+  <form id="new-game">
+      <button type="submit" name="submit" class="btn btn-default">New Game</button>
+  </form>
+
+  <form id="show-game">
+      <input type="email" name="game[id]" placeholder="Game ID">
+      <button type="submit" name="submit" class="btn btn-default">Find Game</button>
+  </form>
+
+  <form id="join-game">
+      <input type="email" name="game[id]" placeholder="Game ID">
+      <button type="submit" name="submit" class="btn btn-default">Join Game</button>
+  </form>
+
+  <!-- MODAL SECTION  -->
+  <!-- Sign In Modal -->
+  <div class="modal fade" id="signInModal" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button> -->
+          <h4 class="modal-title" id="myModalLabel">Sign in!</h4>
+        </div>
+        <div class="modal-body">
+          <form>
+            <input name="credentials[email]" placeholder="email address">
+            <input name="credentials[password]" placeholder="password">
+          </form>
+        </div>
+        <div class="modal-footer">
+          <!-- <button type="button" class="btn btn-default" data-dismiss="modal">Close</button> -->
+          <button type="button" class="btn btn-primary" id="sign-in-button">Sign in!</button>
+        </div>
       </div>
     </div>
+  </div>
 
-    <!-- MODAL SECTION  -->
-        <!-- Sign In Modal -->
-        <div class="modal fade" id="signInModal" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-          <div class="modal-dialog" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button> -->
-                <h4 class="modal-title" id="myModalLabel">Sign in!</h4>
-              </div>
-              <div class="modal-body">
-                <form>
-                  <input name="credentials[email]" placeholder="email address">
-                  <input name="credentials[password]" placeholder="password">
-                </form>
-              </div>
-              <div class="modal-footer">
-                <!-- <button type="button" class="btn btn-default" data-dismiss="modal">Close</button> -->
-                <button type="button" class="btn btn-primary" id="sign-in-button">Sign in!</button>
-              </div>
-            </div>
-          </div>
-        </div>
+  <!-- Sign up, sign in, change password, sign out forms -->
+  <form id="sign-up">
+    <fieldset>
+      <legend>Sign up!</legend>
+      <input type="email" name="credentials[email]" placeholder="Enter your email">
+      <input type="password" name="credentials[password]" placeholder="Enter your password">
+      <input type="password" name="credentials[password]" placeholder="Confirm password">
+      <input type="submit" name="submit" value="Sign up!">
+    </fieldset>
+  </form>
 
-<!-- Sign up, sign in, change password, sign out forms -->
-<form id="sign-up">
-        <fieldset>
-          <legend>Sign up!</legend>
-          <input type="email" name="credentials[email]" placeholder="Enter your email">
-          <input type="password" name="credentials[password]" placeholder="Enter your password">
-          <input type="password" name="credentials[password]" placeholder="Confirm password">
-          <input type="submit" name="submit" value="Sign up!">
-        </fieldset>
-      </form>
+  <form id="sign-in">
+    <fieldset>
+      <legend>Sign in!</legend>
+      <input type="email" name="credentials[email]" placeholder="Enter your email">
+      <input type="password" name="credentials[password]" placeholder="Enter your password">
+      <input type="submit" name="submit" value="Sign in!">
+    </fieldset>
+  </form>
 
-      <form id="sign-in">
-        <fieldset>
-          <legend>Sign in!</legend>
-          <input type="email" name="credentials[email]" placeholder="Enter your email">
-          <input type="password" name="credentials[password]" placeholder="Enter your password">
-          <input type="submit" name="submit" value="Sign in!">
-        </fieldset>
-      </form>
+  <form id="change-password">
+    <fieldset>
+      <legend>Change password</legend>
+      <input type="password" name="passwords[old]" placeholder="Old password">
+      <input type="password" name="passwords[new]" placeholder="New password">
+      <input type="submit" name="submit" value="Change password">
+    </fieldset>
+  </form>
 
-      <form id="change-password">
-        <fieldset>
-          <legend>Change password</legend>
-          <input type="password" name="passwords[old]" placeholder="Old password">
-          <input type="password" name="passwords[new]" placeholder="New password">
-          <input type="submit" name="submit" value="Change password">
-        </fieldset>
-      </form>
-
-      <form id="sign-out">
-        <fieldset>
-          <legend>Sign out</legend>
-          <input type="submit" name="submit" value="Sign out">
-        </fieldset>
-      </form>
+  <form id="sign-out">
+    <fieldset>
+      <legend>Sign out</legend>
+      <input type="submit" name="submit" value="Sign out">
+    </fieldset>
+  </form>
 
 
-      </body>
-    </html>
-    </body>
-</html
+</body>
+
+</html>

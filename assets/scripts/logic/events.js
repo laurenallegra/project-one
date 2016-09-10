@@ -1,93 +1,142 @@
 'use strict';
-
-let gameBoardArray = ['','','','','','','','',''];
+const getFormFields = require('../../../lib/get-form-fields');
 
 // `requires` below
-const app = require('.././app');
-const ui = require('./ui');
 const api = require('./api');
+const ui = require('./ui');
 
-const onPlaceX = function (event) {
-  let id=this.id;
+const onNewGame = function (event) {
+event.preventDefault();
+let data = getFormFields(event.target);
+api.newGame(data)
+  .some(ui.newGameSuccess)
+  .fail(ui.failure);
+};
+
+const onIndexGames = function(event) {
   event.preventDefault();
-  if (app.player === 'x') {
-    app.player = 'o';
-    let cellclicked = event.target;
-    $(cellclicked).html('O');
+  api.indexGames()
+  .done(ui.success)
+  .fail(ui.failure);
+};
 
-    gameBoardArray[id] = app.player;
-    console.log(gameBoardArray);
+const onShowGame = function(event) {
+  event.preventDefault();
+  let data = getFormFields(event.target);
+  api.showGame(data)
+  .done(ui.success)
+  .fail(ui.failure);
+};
 
-  } else if (app.player === 'o') {
-    app.player = 'x';
-    let cellclicked = event.target;
-    $(cellclicked).html('X');
+const onJoinGame = function(event) {
+  event.preventDefault();
+  let data = getFormFields(event.target);
+  api.joinGame(data)
+  .done(ui.success)
+  .fail(ui.failure);
+};
 
-    gameBoardArray[id] = app.player;
-    console.log(gameBoardArray);
+
+
+
+
+
+const board = ['','','','','','','','',''];
+
+let player = 'X';
+// let turn = 0;
+
+// const onNewGame = function onNewGame (event) {
+//   event.preventDefault();
+//   $('col-xs-4').html('');
+//   let data = {};
+//   api.newGame(data)
+//     .done(ui.onNewGameSuccess)
+//     .fail(ui.onError);
+// };
+
+// // ALL 3 `GAME WIN` LOGIC BELOW
+// // looks for horizontal win
+// const horizontalWin = (cells, id) => {
+//  if ([0, 1, 2].indexOf(id) > -1) {
+//    return ((cells[0] === cells[1]) && (cells[1] === cells[2]));
+//  } else if ([3, 4, 5]).indexOf(id) > -1 {
+//    return ((cells[3] === cells[4]) && (cells[4] === cells[5]));
+//  } else if ([6, 7, 8]).indexOf(id) > -1 {
+//    return ((cells[6] === cells[7]) && (cells[7] === cells[8]));
+//  }
+// };
+//
+// // looks for vertical win
+// const verticalWin = (cells, id) => {
+//  if ([0, 3, 6].indexOf(id) > -1) {
+//    return ((cells[0] === cells[3]) && (cells[3] === cells[6]));
+//  } else if ([1, 4, 7]).indexOf(id) > -1 {
+//    return ((cells[1] === cells[4]) && (cells[4] === cells[7]));
+//  } else if ([2, 5, 8]).indexOf(id) > -1 {
+//    return ((cells[2] === cells[5]) && (cells[5] === cells[8]));
+//  }
+// };
+//
+// // looks for diagonal win
+// const diagonalWin = (cells, id) => {
+//  let win = false;
+//  if ([0, 4, 8].indexOf(id) > -1) {
+//    win = (cells[0] === cells[4]) && (cells[4] === cells[8]));
+//  }
+//  if ([2, 4, 6].indexOf(id) > -1) {
+//    win = (cells[2] === cells[4]) && (cells[4] === cells[6])) {
+//      win = true;
+//    }
+//  }
+//
+// return win;
+//  }
+// };
+
+const updateBoard = function (cell) {
+  let index = $(cell).data('index');
+  board[index] = player;
+};
+
+const changePlayer = function () {
+  if (player === 'X') {
+    player = 'O';
+  } else {
+    player = 'X';
   }
 };
 
-// ALL 3 `GAME WIN` LOGIC BELOW
-// looks for horizontal win
-const horizontalWin = (cells, id) => {
- if ([0, 1, 2].indexOf(id) > -1) {
-   return ((cells[0] === cells[1]) && (cells[1] === cells[2]));
- } else if ([3, 4, 5]).indexOf(id) > -1 {
-   return ((cells[3] === cells[4]) && (cells[4] === cells[5]));
- } else if ([6, 7, 8]).indexOf(id) > -1 {
-   return ((cells[6] === cells[7]) && (cells[7] === cells[8]));
- }
+const placeMarker = function (cell) {
+  $(cell).html(player);
 };
 
-// looks for vertical win
-const verticalWin = (cells, id) => {
- if ([0, 3, 6].indexOf(id) > -1) {
-   return ((cells[0] === cells[3]) && (cells[3] === cells[6]));
- } else if ([1, 4, 7]).indexOf(id) > -1 {
-   return ((cells[1] === cells[4]) && (cells[4] === cells[7]));
- } else if ([2, 5, 8]).indexOf(id) > -1 {
-   return ((cells[2] === cells[5]) && (cells[5] === cells[8]));
- }
+const isValidMove = function (cell) {
+  if ($(cell).html() === '' /*   && !isGameOver() */) {
+    return true;
+  } else {
+    return false;
+  }
 };
 
-// looks for diagonal win
-const diagonalWin = (cells, id) => {
- let win = false;
- if ([0, 4, 8].indexOf(id) > -1) {
-   win = (cells[0] === cells[4]) && (cells[4] === cells[8]));
- }
- if ([2, 4, 6].indexOf(id) > -1) {
-   win = (cells[2] === cells[4]) && (cells[4] === cells[6])) {
-     win = true;
-   }
- }
-
-return win;
- }
+const onCellClick = function (event) {
+  if (isValidMove(event.target)) {
+    placeMarker(event.target);
+    updateBoard(event.target);
+    console.log('board is ', board);
+    changePlayer();
+  }
 };
-
-// checks if move is possible
-const isValidMove = (id) => {
- return (!game.currentGame.cells[id] && !game.currentGame.over);
-
-};
-
-// OLD CHANGE PLAYER CODE BELOW (DELETE LATER)
-// const changePlayer = () => {
-//   if (app.player === 'x') {
-//     app.player = 'o';
-//   }
-//   else if (app.player === 'o') {
-//     app.player = 'x';
-//   }
-// };
 
 const addHandlers = () => {
-  $('.col-xs-4').on('click', onPlaceX);
+  $('#index-games').on('submit', onIndexGames);
+  $('#new-game').on('submit', onNewGame);
+  $('#show-game').on('submit', onShowGame);
+  $('#join-game').on('submit', onJoinGame);
+
+  $('.cell').on('click', onCellClick);
 };
 
 module.exports = {
   addHandlers,
-  onPlaceX,
 };

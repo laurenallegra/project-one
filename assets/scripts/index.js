@@ -4,27 +4,26 @@
 // var example = require('./example');
 
 // use require without a reference to ensure a file is bundled
-require('./example');
-require('.././events');
 
+const authEvents = require('./auth/events.js');
+const logicEvents = require('./logic/events.js');
 // event handlers and stuff
 
-$('#sign-in').on('click', function() {
-$('#signInModal').modal('show');
-});
-
-$('#sign-in-button').on('click', function() {
-$('#signInModal').modal('hide');
-$('#sign-out').show();
-$('#change-password').show();
-$('#sign-up').hide();
-$('#sign-in').hide();
-});
-
-const logicEvents = require('./logic/events.js');
+// $('#sign-in').on('click', function() {
+// $('#signInModal').modal('show');
+// });
+//
+// $('#sign-in-button').on('click', function() {
+// $('#signInModal').modal('hide');
+// $('#sign-out').show();
+// $('#change-password').show();
+// $('#sign-up').hide();
+// $('#sign-in').hide();
+// });
 
 $(() => {
   logicEvents.addHandlers();
+  authEvents.addHandlers();
 });
 
 // $(document).ready(function() {

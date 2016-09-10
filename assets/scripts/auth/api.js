@@ -4,8 +4,8 @@ const app = require('../app');
 
 const signUp = (data) => {
   console.log(data);
-return $.ajax({
-    url:app.host + '/sign-up',
+  return $.ajax({
+    url: app.host + '/sign-up',
     method: 'POST',
     data: data,
   });
