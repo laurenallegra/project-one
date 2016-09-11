@@ -47,10 +47,23 @@ const signOut = () => {
     });
 };
 
+//ajax request to create a new game attached to the current user
+const newGame = (data) => {
+  return $.ajax({
+    url: app.api + 'games',
+    method: "POST",
+    headers: {
+    Authorization: 'Token token=' + app.user.token,
+  },
+  data,
+  });
+};
+
 
 module.exports = {
   signUp,
   signIn,
   signOut,
   changePassword,
+  newGame
 };

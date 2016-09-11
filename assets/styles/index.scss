@@ -44,7 +44,8 @@ h4 {
 }
 
 .forms,
-.buttons {
+.buttons,
+.container {
   font-family: 'Schoolbell', cursive;
 }
 
@@ -74,4 +75,24 @@ h4 {
 
 .navbar-right {
   margin: 10px;
+}
+
+#user-stats {
+  background: $charcoal;
+  border-radius: .25em;
+  color: $white;
+  display: inline-block;
+  font-size: 1.5em;
+  margin: 2em auto;
+  padding: 1em 2em;
+}
+
+#game-status {
+  background: $lime-green;
+  border-radius: .25em;
+  color: $black;
+  display: inline-block;
+  font-size: 1.5em;
+  margin: 0 auto 2em;
+  padding: 1em 2em;
 }
