@@ -1,6 +1,6 @@
 'use strict';
 
-const app = require('../app');
+const app = require('../app.js');
 
 const signUp = (data) => {
   console.log(data);
@@ -10,6 +10,10 @@ const signUp = (data) => {
     data: data,
   });
 };
+
+// create game - POST
+// get game - GET
+// update game - PATCH
 
 const signIn = (data) => {
     return $.ajax({

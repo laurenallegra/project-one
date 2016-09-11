@@ -17,7 +17,7 @@
     <h3>wanna play tic-tac-toe?</h3>
     <h4>give it a go!</h4>
 
-  <!-- tic-tac-toe board -->
+<!-- tic-tac-toe board -->
 </header>
   <div class="container">
     <div class="row">
@@ -37,6 +37,8 @@
     </div>
   </div>
 
+<!-- buttons -->
+<div class="buttons">
   <form id="index-game">
       <button type="submit" name="submit" class="btn btn-default">Show Games</button>
   </form>
@@ -49,8 +51,46 @@
       <input type="email" name="game[id]" placeholder="Game ID">
       <button type="submit" name="submit" class="btn btn-default">Find Game</button>
   </form>
+</div>
 
-  <!-- MODAL SECTION  -->
+<!-- Sign up, sign in, change password, sign out forms -->
+<div class = "forms">
+    <form id="sign-up">
+      <fieldset>
+        <legend>Sign up!</legend>
+        <input type="email" name="credentials[email]" placeholder="Enter your email">
+        <input type="password" name="credentials[password]" placeholder="Enter your password">
+        <input type="password" name="credentials[password]" placeholder="Confirm password">
+        <input type="submit" name="submit" value="Sign up!">
+      </fieldset>
+    </form>
+
+    <form id="sign-in">
+      <fieldset>
+        <legend>Sign in!</legend>
+        <input type="email" name="credentials[email]" placeholder="Enter your email">
+        <input type="password" name="credentials[password]" placeholder="Enter your password">
+        <input type="submit" name="submit" value="Sign in!">
+      </fieldset>
+    </form>
+
+    <form id="change-password">
+      <fieldset>
+        <legend>Change password</legend>
+        <input type="password" name="passwords[old]" placeholder="Old password">
+        <input type="password" name="passwords[new]" placeholder="New password">
+        <input type="submit" name="submit" value="Change password">
+      </fieldset>
+    </form>
+
+    <form id="sign-out">
+      <fieldset>
+        <legend>Sign out</legend>
+        <input type="submit" name="submit" value="Sign out">
+      </fieldset>
+    </form>
+</div>
+  <!-- MODALS  -->
   <!-- Sign In Modal -->
   <div class="modal fade" id="signInModal" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog" role="document">
@@ -72,42 +112,6 @@
       </div>
     </div>
   </div>
-
-  <!-- Sign up, sign in, change password, sign out forms -->
-  <form id="sign-up">
-    <fieldset>
-      <legend>Sign up!</legend>
-      <input type="email" name="credentials[email]" placeholder="Enter your email">
-      <input type="password" name="credentials[password]" placeholder="Enter your password">
-      <input type="password" name="credentials[password]" placeholder="Confirm password">
-      <input type="submit" name="submit" value="Sign up!">
-    </fieldset>
-  </form>
-
-  <form id="sign-in">
-    <fieldset>
-      <legend>Sign in!</legend>
-      <input type="email" name="credentials[email]" placeholder="Enter your email">
-      <input type="password" name="credentials[password]" placeholder="Enter your password">
-      <input type="submit" name="submit" value="Sign in!">
-    </fieldset>
-  </form>
-
-  <form id="change-password">
-    <fieldset>
-      <legend>Change password</legend>
-      <input type="password" name="passwords[old]" placeholder="Old password">
-      <input type="password" name="passwords[new]" placeholder="New password">
-      <input type="submit" name="submit" value="Change password">
-    </fieldset>
-  </form>
-
-  <form id="sign-out">
-    <fieldset>
-      <legend>Sign out</legend>
-      <input type="submit" name="submit" value="Sign out">
-    </fieldset>
-  </form>
 
 
 </body>

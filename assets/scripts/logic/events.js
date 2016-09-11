@@ -30,13 +30,7 @@ const onShowGame = function(event) {
   .fail(ui.failure);
 };
 
-const onJoinGame = function(event) {
-  event.preventDefault();
-  let data = getFormFields(event.target);
-  api.joinGame(data)
-  .done(ui.success)
-  .fail(ui.failure);
-};
+
 
 
 const board = ['','','','','','','','',''];
@@ -81,7 +75,7 @@ let player = 'X';
 //      win = true;
 //    }
 //  }
-// 
+//
 // return win;
 //  }
 // };
@@ -111,11 +105,6 @@ const isValidMove = function (cell) {
   }
 };
 
-const isGameOver = function () {
-
-};
-
-
 const onCellClick = function (event) {
   if (isValidMove(event.target)) {
     placeMarker(event.target);
@@ -129,7 +118,7 @@ const addHandlers = () => {
   $('#index-games').on('submit', onIndexGames);
   $('#new-game').on('submit', onNewGame);
   $('#show-game').on('submit', onShowGame);
-  $('#join-game').on('submit', onJoinGame);
+  // $('#join-game').on('submit', onJoinGame);
 
   $('.cell').on('click', onCellClick);
 };

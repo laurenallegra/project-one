@@ -6,12 +6,22 @@ const newGame = () => {
   let token = app.user.token;
   return $.ajax({
     url: app.host + '/games',
-    method: 'GET',
+    method: 'POST',
     headers: {
       Authorization: 'Token token=' + token,
     }
   });
 };
+
+// const updateGame = () => {
+//   return $.ajax({
+//     url: 'http://tic-tac-toe.wdibos.com/games/',
+//     method: 'PATCH',
+//     headers: {
+//       Authorization: 'Token token=' +
+//     }
+//   });
+// };
 
 // CODE BELOW HAD WEIRDO LINTER ERRORS NO ONE COULD DEBUG - REPLACED WITH
 // CODE BLOCK BELOW THIS ONE
