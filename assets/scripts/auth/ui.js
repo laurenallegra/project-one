@@ -3,7 +3,7 @@
 const app = require('../app');
 
 const signInSuccess = (data) => {
-  localStorage.sessionUser = JSON.stringify(data.user);
+  // localStorage.sessionUser = JSON.stringify(data.user);
   app.user = data.user;
 };
 

@@ -27,10 +27,10 @@ const signIn = (data) => {
 // ajax request to let a signed-in user change his/her password
 const changePassword = (data) => {
   return $.ajax({
-    url: app.host + '/change-password/' + app.getUser().id,
+    url: app.host + '/change-password/' + app.user.id,
     method: 'PATCH',
     headers: {
-      Authorization: 'Token token=' + app.getUser().token,
+      Authorization: 'Token token=' + app.user.token,
     },
     data: data,
   });
@@ -39,10 +39,10 @@ const changePassword = (data) => {
 // ajax request to let a signed-in user sign out
 const signOut = () => {
   return $.ajax({
-    url: app.host + '/sign-out/' + app.getUser().id,
+    url: app.host + '/sign-out/' + app.user.id,
     method: 'DELETE',
     headers: {
-      Authorization: 'Token token=' + app.getUser().token,
+      Authorization: 'Token token=' + app.user.token,
     },
   });
 };
@@ -53,13 +53,13 @@ const newGame = (data) => {
     url: app.api + 'games',
     method: "POST",
     headers: {
-      Authorization: 'Token token=' + app.getUser().token,
+      Authorization: 'Token token=' + app.user.token,
     },
     data,
   });
 };
 
-// TODO: ADD GET-GAME STATS FUNCTION
+// TODO: ADD AJAX REQUEST FOR GAME STATS
 
 module.exports = {
   signUp,
