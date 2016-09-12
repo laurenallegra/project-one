@@ -3,7 +3,7 @@
 const app = require('../app.js');
 
 const newGame = () => {
-  let token = app.user.token;
+  let token = app.getUser().token;
   return $.ajax({
     url: app.host + '/games',
     method: 'POST',
@@ -13,42 +13,18 @@ const newGame = () => {
   });
 };
 
-// const updateGame = () => {
-//   return $.ajax({
-//     url: 'http://tic-tac-toe.wdibos.com/games/',
-//     method: 'PATCH',
-//     headers: {
-//       Authorization: 'Token token=' +
-//     }
-//   });
-// };
-
-// CODE BELOW HAD WEIRDO LINTER ERRORS NO ONE COULD DEBUG - REPLACED WITH
-// CODE BLOCK BELOW THIS ONE
-// const showGame = () => {
-//   let token = app.user.token;
-//   let gameId = data.game.id;
-//   return $.ajax({
-//     url: app.host + '/games/', + data.game.id,
-//     method: 'GET',
-//     headers: {
-//       Authorization: 'Token token=' + app.user.token,
-//     }
-//   });
-// };
-
 const showGame = () => {
 return $.ajax({
    url: 'http://tic-tac-toe.wdibos.com/games/',
    headers: {
-     Authorization: 'Token token=' + app.user.token,
+     Authorization: 'Token token=' + app.getUser().token,
    },
    method: 'GET',
  });
 };
 
 const indexGames = () => {
-  let token = app.user.token;
+  let token = app.getUser().token;
   return $.ajax({
     url: app.host + '/games',
     method: 'GET',
@@ -60,7 +36,7 @@ const indexGames = () => {
 
 // FIX CODE BELOW
 // const showGame = (data) => {
-//   let token = app.user.token;
+//   let token = app.getUser().token;
 //   let gameId = data.game.id;
 //   return $.ajax({
 //     url: app.host + '/games/', + gameId,
@@ -68,6 +44,16 @@ const indexGames = () => {
 //     headers: {
 //       Authorization: 'Token token=' + token,
 //     },
+//   });
+// };
+
+// const updateGame = () => {
+//   return $.ajax({
+//     url: 'http://tic-tac-toe.wdibos.com/games/',
+//     method: 'PATCH',
+//     headers: {
+//       Authorization: 'Token token='
+//     }
 //   });
 // };
 

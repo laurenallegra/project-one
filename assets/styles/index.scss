@@ -2,9 +2,8 @@ $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
 @import '~bootstrap-sass/assets/stylesheets/bootstrap/';
 @import 'colors';
 
-// $background-color: #4e4e4e;
-$font-color: $medium-sea-green;
-$grid-color: $yellow-green;
+// $font-color: $medium-sea-green;
+// $grid-color: $yellow-green;
 
 $unit: 30px;
 $width: (4 * $unit);
@@ -12,7 +11,7 @@ $height: (4 * $unit);
 
 body {
   background-color: $dark-olive-green;
-  color: $grid-color;
+  color: $yellow-green;
 }
 
 header {
@@ -50,13 +49,13 @@ h4 {
 }
 
 .cell {
-  color: $sea-green;
-  font-size: 50px;
+  color: $yellow-green;
+  font-size: 70px;
   margin: 5px;
 }
 
 .row > .col-xs-4 {
-  border: 2px solid $font-color;
+  border: 2px solid $medium-sea-green;
   box-sizing: border-box;
   height: $height;
   padding: 20px;
@@ -78,9 +77,9 @@ h4 {
 }
 
 #user-stats {
-  background: $charcoal;
+  background: $olive;
   border-radius: .25em;
-  color: $white;
+  color: $yellow-green;
   display: inline-block;
   font-size: 1.5em;
   margin: 2em auto;
@@ -88,9 +87,9 @@ h4 {
 }
 
 #game-status {
-  background: $lime-green;
+  background: $sea-green;
   border-radius: .25em;
-  color: $black;
+  color: $off-white;
   display: inline-block;
   font-size: 1.5em;
   margin: 0 auto 2em;

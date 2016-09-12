@@ -13,8 +13,10 @@ const failure = (error) => {
 const newGameSuccess = (data) => {
   app.game = data.game;
   console.log(app.game);
+  $('.container [data-index]').each(function (i, cell) {
+    $(cell).empty();
+  });
 };
-
 
 module.exports = {
   failure,

@@ -93,7 +93,7 @@ const checkWin = function (cell) {
 
 const isGameOver = function (cell) {
   if (checkWin(cell)) {
-    setGameStatus('Player ' + player + ' has won.');
+    setGameStatus('Player ' + player + ' has won!');
     return true;
   }
   return false;

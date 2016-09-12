@@ -3,6 +3,7 @@
 const app = require('../app');
 
 const signInSuccess = (data) => {
+  localStorage.sessionUser = JSON.stringify(data.user);
   app.user = data.user;
 };
 
@@ -19,6 +20,7 @@ const failure = (error) => {
 };
 
 const signOutSuccess = () => {
+  delete localStorage.sessionUser;
   app.user = null;
   console.log("Successfully signed out.");
 };

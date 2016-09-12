@@ -18,47 +18,48 @@ const signUp = (data) => {
 
 // ajax request to let a user sign in
 const signIn = (data) => {
-    return $.ajax({
-      url:app.host + '/sign-in',
-      method: 'POST',
-      data: data,
-    });
+  return $.ajax({
+    url: app.host + '/sign-in',
+    method: 'POST',
+    data: data,
+  });
 };
 // ajax request to let a signed-in user change his/her password
 const changePassword = (data) => {
-    return $.ajax({
-      url: app.host + '/change-password/' + app.user.id,
-      method: 'PATCH',
-      headers: {
-      Authorization: 'Token token=' + app.user.token,
-      },
-      data: data,
-    });
+  return $.ajax({
+    url: app.host + '/change-password/' + app.getUser().id,
+    method: 'PATCH',
+    headers: {
+      Authorization: 'Token token=' + app.getUser().token,
+    },
+    data: data,
+  });
 };
 
 // ajax request to let a signed-in user sign out
 const signOut = () => {
-    return $.ajax({
-      url: app.host + '/sign-out/' + app.user.id,
-      method: 'DELETE',
-      headers: {
-      Authorization: 'Token token=' + app.user.token,
-      },
-    });
+  return $.ajax({
+    url: app.host + '/sign-out/' + app.getUser().id,
+    method: 'DELETE',
+    headers: {
+      Authorization: 'Token token=' + app.getUser().token,
+    },
+  });
 };
 
-//ajax request to create a new game attached to the current user
+// ajax request to create a new game attached to the current user
 const newGame = (data) => {
   return $.ajax({
     url: app.api + 'games',
     method: "POST",
     headers: {
-    Authorization: 'Token token=' + app.user.token,
-  },
-  data,
+      Authorization: 'Token token=' + app.getUser().token,
+    },
+    data,
   });
 };
 
+// TODO: ADD GET-GAME STATS FUNCTION
 
 module.exports = {
   signUp,
