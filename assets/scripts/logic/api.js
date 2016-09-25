@@ -47,24 +47,24 @@ const indexGames = () => {
 //   });
 // };
 
-const updateGame = (cell, player /*, over */) => {
-  let token = app.user.token;
-  let gameId = app.game.id;
+const updateGame = (/*cell, player /*, over */) => {
+  // let token = app.user.token;
+  // let gameId = app.game.id;
   return $.ajax({
-    url: app.host + '/games/' + gameId,
-    method: 'PATCH',
-    headers: {
-      Authorization: 'Token token=' + token
-    },
-    data: {
-      "game": {
-        "cell": {
-          "index": cell,
-          "value": player,
-        },
-        "over": false /* over */
-      }
-    }
+    url: app.host/* + '/games/' + gameId,*/
+    // method: 'PATCH',
+  //   headers: {
+  //     Authorization: 'Token token=' + token
+  //   },
+  //   data: {
+  //     "game": {
+  //       "cell": {
+  //         "index": cell,
+  //         "value": player,
+  //       },
+  //       "over": false /* over */
+  //     }
+  //   }
   });
 };
 
