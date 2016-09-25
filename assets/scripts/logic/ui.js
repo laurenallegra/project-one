@@ -18,8 +18,13 @@ const newGameSuccess = (data) => {
   });
 };
 
+const updateGameSuccess = (data) => {
+  console.log(data);
+};
+
 module.exports = {
   failure,
   success,
-  newGameSuccess
+  newGameSuccess,
+  updateGameSuccess
 };

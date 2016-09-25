@@ -6,12 +6,16 @@ const getFormFields = require('../../../lib/get-form-fields');
 const api = require('./api');
 const ui = require('./ui');
 
+let board = ['','','','','','','','',''];
+
+let player = 'X';
+
 const onNewGame = function (event) {
   event.preventDefault();
-  let data = getFormFields(event.target);
-  api.newGame(data)
+  api.newGame()
     .done(ui.newGameSuccess)
     .fail(ui.failure);
+  board = ['','','','','','','','',''];
 };
 
 const onIndexGames = function(event) {
@@ -29,9 +33,6 @@ const onShowGame = function(event) {
     .fail(ui.failure);
 };
 
-const board = ['','','','','','','','',''];
-
-let player = 'X';
 // let gameOver = false;
 // let turn = 0;
 
@@ -95,6 +96,7 @@ const isGameOver = function (cell) {
   if (checkWin(cell)) {
     setGameStatus('Player ' + player + ' has won!');
     return true;
+    // let over = true;
   }
   return false;
 };
@@ -134,14 +136,20 @@ const updateUserStats = function () {
 };
 
 const onCellClick = function (event) {
+  let value = player;
   if (isValidMove(event.target)) {
     placeMarker(event.target);
     updateBoard(event.target);
     console.log('board is ', board);
-    if (isGameOver(event.target)) {
+    let cell = $(event.target).data('index');
+    let over = isGameOver(event.target);
+    if (over /* isGameOver */) {
       updateUserStats();
-      // TODO - change
+      // let over = true;
     }
+    api.updateGame(cell, value/*, over */)
+      .done(ui.updateGameSuccess)
+      .fail(ui.updateGameFailure);
     changePlayer();
   } else {
     // TODO - display an error if invalid move?
@@ -152,7 +160,6 @@ const addHandlers = () => {
   $('#index-games').on('submit', onIndexGames);
   $('#new-game').on('submit', onNewGame);
   $('#show-game').on('submit', onShowGame);
-  // $('#join-game').on('submit', onJoinGame);
 
   $('.cell').on('click', onCellClick);
 };

@@ -48,14 +48,13 @@ const signOut = () => {
 };
 
 // ajax request to create a new game attached to the current user
-const newGame = (data) => {
+const newGame = () => {
   return $.ajax({
     url: app.api + 'games',
     method: "POST",
     headers: {
       Authorization: 'Token token=' + app.user.token,
     },
-    data,
   });
 };
 

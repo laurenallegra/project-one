@@ -3,7 +3,7 @@
 const app = require('../app.js');
 
 const newGame = () => {
-  let token = app.getUser().token;
+  let token = app.user.token;
   return $.ajax({
     url: app.host + '/games',
     method: 'POST',
@@ -17,14 +17,14 @@ const showGame = () => {
 return $.ajax({
    url: 'http://tic-tac-toe.wdibos.com/games/',
    headers: {
-     Authorization: 'Token token=' + app.getUser().token,
+     Authorization: 'Token token=' + app.user.token,
    },
    method: 'GET',
  });
 };
 
 const indexGames = () => {
-  let token = app.getUser().token;
+  let token = app.user.token;
   return $.ajax({
     url: app.host + '/games',
     method: 'GET',
@@ -35,11 +35,11 @@ const indexGames = () => {
 };
 
 // FIX CODE BELOW
-// const showGame = (data) => {
-//   let token = app.getUser().token;
-//   let gameId = data.game.id;
+// const indexGames = (data) => {
+//   let token = app.user.token;
+//   let gameId = app.game.id;
 //   return $.ajax({
-//     url: app.host + '/games/', + gameId,
+//     url: app.host + '/games/' + gameId,
 //     method: 'PATCH',
 //     headers: {
 //       Authorization: 'Token token=' + token,
@@ -47,18 +47,30 @@ const indexGames = () => {
 //   });
 // };
 
-// const updateGame = () => {
-//   return $.ajax({
-//     url: 'http://tic-tac-toe.wdibos.com/games/',
-//     method: 'PATCH',
-//     headers: {
-//       Authorization: 'Token token='
-//     }
-//   });
-// };
+const updateGame = (cell, player /*, over */) => {
+  let token = app.user.token;
+  let gameId = app.game.id;
+  return $.ajax({
+    url: app.host + '/games/' + gameId,
+    method: 'PATCH',
+    headers: {
+      Authorization: 'Token token=' + token
+    },
+    data: {
+      "game": {
+        "cell": {
+          "index": cell,
+          "value": player,
+        },
+        "over": false /* over */
+      }
+    }
+  });
+};
 
 module.exports = {
   newGame,
   showGame,
   indexGames,
+  updateGame
 };

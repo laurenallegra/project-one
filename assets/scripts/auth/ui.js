@@ -5,6 +5,7 @@ const app = require('../app');
 const signInSuccess = (data) => {
   // localStorage.sessionUser = JSON.stringify(data.user);
   app.user = data.user;
+  console.log('app.user is ',app.user);
 };
 
 const changePasswordSuccess = () => {
