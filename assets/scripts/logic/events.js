@@ -9,6 +9,7 @@ const ui = require('./ui');
 let board = ['','','','','','','','',''];
 
 let player = 'X';
+let over = false;
 
 const onNewGame = function (event) {
   event.preventDefault();
@@ -95,8 +96,8 @@ const checkWin = function (cell) {
 const isGameOver = function (cell) {
   if (checkWin(cell)) {
     setGameStatus('Player ' + player + ' has won!');
+    over = true;
     return true;
-    // let over = true;
   }
   return false;
 };
@@ -142,17 +143,15 @@ const onCellClick = function (event) {
     updateBoard(event.target);
     console.log('board is ', board);
     let cell = $(event.target).data('index');
-    let over = isGameOver(event.target);
-    if (over /* isGameOver */) {
-      updateUserStats();
-      // let over = true;
-    }
-    api.updateGame(cell, value/*, over */)
-      .done(ui.updateGameSuccess)
-      .fail(ui.updateGameFailure);
+    // let over = isGameOver(event.target);
+    // if (over /* isGameOver */) {
+    //   updateUserStats();
+    //   // let over = true;
+    // }
+    api.updateGame(cell, value, over)
+      .done(ui.success)
+      .fail(ui.failure);
     changePlayer();
-  } else {
-    // TODO - display an error if invalid move?
   }
 };
 
