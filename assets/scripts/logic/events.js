@@ -73,6 +73,9 @@ const diagonalWin = (cells, id) => {
   return win;
 };
 
+// looks for tie
+// some code here
+
 const setGameStatus = function (messageHTML) {
   $('#game-status').html(messageHTML);
 };
@@ -127,9 +130,9 @@ const isValidMove = function (cell) {
 };
 
 const updateUserStats = function () {
-  let wins = 5;
-  let losses = 10;
-  let ties = 20;
+  let wins = 0;
+  let losses = 0;
+  let ties = 0;
   $('[data-count-type="win"]').html(wins);
   $('[data-count-type="loss"]').html(losses);
   $('[data-count-type="tie"]').html(ties);

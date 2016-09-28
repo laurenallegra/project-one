@@ -21,9 +21,15 @@ const logicEvents = require('./logic/events.js');
 // $('#sign-in').hide();
 // });
 
+
 $(() => {
   logicEvents.addHandlers();
   authEvents.addHandlers();
+  $('#game-board').hide();
+  $('#new-game').hide();
+  $('#index-games').hide();
+  $('#change-password').hide();
+  $('#sign-out').hide();
 });
 
 // $(document).ready(function() {
