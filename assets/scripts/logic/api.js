@@ -15,11 +15,11 @@ const newGame = () => {
 
 const showGame = () => {
 return $.ajax({
-   url: 'http://tic-tac-toe.wdibos.com/games/',
+   url: app.host + '/games',
+   method: 'GET',
    headers: {
      Authorization: 'Token token=' + app.user.token,
    },
-   method: 'GET',
  });
 };
 

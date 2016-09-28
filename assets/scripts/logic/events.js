@@ -22,14 +22,13 @@ const onNewGame = function (event) {
 const onIndexGames = function(event) {
   event.preventDefault();
   api.indexGames()
-    .done(ui.success)
+    .done(ui.indexGameSuccess)
     .fail(ui.failure);
 };
 
 const onShowGame = function(event) {
   event.preventDefault();
-  let data = getFormFields(event.target);
-  api.showGame(data)
+  api.showGame()
     .done(ui.success)
     .fail(ui.failure);
 };
@@ -143,11 +142,11 @@ const onCellClick = function (event) {
     updateBoard(event.target);
     console.log('board is ', board);
     let cell = $(event.target).data('index');
-    // let over = isGameOver(event.target);
-    // if (over /* isGameOver */) {
-    //   updateUserStats();
-    //   // let over = true;
-    // }
+    let over = isGameOver(event.target);
+    if (over) {
+      updateUserStats();
+      // let over = true;
+    }
     api.updateGame(cell, value, over)
       .done(ui.success)
       .fail(ui.failure);
@@ -159,6 +158,7 @@ const addHandlers = () => {
   $('#index-games').on('submit', onIndexGames);
   $('#new-game').on('submit', onNewGame);
   $('#show-game').on('submit', onShowGame);
+
 
   $('.cell').on('click', onCellClick);
 };
