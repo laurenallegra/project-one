@@ -16,6 +16,8 @@ const newGameSuccess = (data) => {
   $('.container [data-index]').each(function (i, cell) {
     $(cell).empty();
   });
+  $('#game-board').show();
+  $('#game-status').html('Good Luck!');
 };
 
 const updateGameSuccess = (data) => {

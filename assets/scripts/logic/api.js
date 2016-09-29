@@ -34,20 +34,6 @@ const indexGames = () => {
   });
 };
 
-// FIX CODE BELOW
-// const indexGames = (data) => {
-//   let token = app.user.token;
-//   let gameId = app.game.id;
-//   return $.ajax({
-//     url: app.host + '/games/' + gameId,
-//     method: 'PATCH',
-//     headers: {
-//       Authorization: 'Token token=' + token,
-//     },
-//   });
-// };
-
-
 const updateGame = (cell, player, over) => {
   let token = app.user.token;
   let gameId = app.game.id;
