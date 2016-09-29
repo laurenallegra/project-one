@@ -5,7 +5,7 @@ const app = require('../app');
 const signInSuccess = (data) => {
   // localStorage.sessionUser = JSON.stringify(data.user);
   app.user = data.user;
-  console.log('app.user is ',app.user);
+  // console.log('app.user is ',app.user);
   $('.new-game-button').click();
   $('#game-board').show();
   $('#new-game').show();
@@ -17,21 +17,21 @@ const signInSuccess = (data) => {
 };
 
 const changePasswordSuccess = () => {
-  console.log('Password successfully changed');
+  // console.log('Password successfully changed');
 };
 
 const success = (data) => {
-  console.log(data);
+  // console.log(data);
 };
 
 const failure = (error) => {
-  console.error(error);
+  // console.error(error);
 };
 
 const signOutSuccess = () => {
   delete localStorage.sessionUser;
   app.user = null;
-  console.log("Successfully signed out.");
+  // console.log("Successfully signed out.");
   $('#sign-up').show();
   $('#sign-in').show();
   $('#game-board').hide();

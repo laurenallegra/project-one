@@ -80,7 +80,7 @@ const setGameStatus = function (messageHTML) {
 
 const checkWin = function (cell) {
   let id = $(cell).data('index');
-  console.log('turn is', turn);
+  // console.log('turn is', turn);
   if (horizontalWin(board, id)) {
     return true;
   } else if (verticalWin(board, id)) {
@@ -156,7 +156,7 @@ const onCellClick = function (event) {
   if (isValidMove(event.target)) {
     placeMarker(event.target);
     updateBoard(event.target);
-    console.log('board is ', board);
+    // console.log('board is ', board);
     let cell = $(event.target).data('index');
     let over = isGameOver(event.target);
     if (over) {
